@@ -22,13 +22,12 @@ public class M10_RBPropertiesCheck {
             char color = scanner.next().charAt(0);
 
             if (val == -1) {
-                nodes[i] = null; // null 節點
+                nodes[i] = null;
             } else {
                 nodes[i] = new RBNode(val, color);
             }
         }
 
-        // 建立父子關係
         for (int i = 0; i < n; i++) {
             if (nodes[i] != null) {
                 int leftIndex = 2 * i + 1;
@@ -52,30 +51,25 @@ public class M10_RBPropertiesCheck {
             return "RB Valid";
         }
 
-        // 性質1: 根節點為黑
         if (nodes[0].color != 'B') {
             return "RootNotBlack";
         }
 
-        // 性質2: 檢查紅紅相鄰
         for (int i = 0; i < n; i++) {
             if (nodes[i] != null && nodes[i].color == 'R') {
                 int leftIndex = 2 * i + 1;
                 int rightIndex = 2 * i + 2;
 
-                // 檢查左子節點
                 if (leftIndex < n && nodes[leftIndex] != null && nodes[leftIndex].color == 'R') {
                     return "RedRedViolation at index " + leftIndex;
                 }
 
-                // 檢查右子節點
                 if (rightIndex < n && nodes[rightIndex] != null && nodes[rightIndex].color == 'R') {
                     return "RedRedViolation at index " + rightIndex;
                 }
             }
         }
 
-        // 性質3: 檢查黑高度一致
         int expectedBlackHeight = getBlackHeight(nodes[0]);
         if (expectedBlackHeight == -1 || !checkBlackHeight(nodes[0], expectedBlackHeight)) {
             return "BlackHeightMismatch";
@@ -86,14 +80,14 @@ public class M10_RBPropertiesCheck {
 
     private static int getBlackHeight(RBNode node) {
         if (node == null) {
-            return 1; // NIL節點視為黑色，高度為1
+            return 1;
         }
 
         int leftHeight = getBlackHeight(node.left);
         int rightHeight = getBlackHeight(node.right);
 
         if (leftHeight == -1 || rightHeight == -1 || leftHeight != rightHeight) {
-            return -1; // 黑高度不一致
+            return -1;
         }
 
         return leftHeight + (node.color == 'B' ? 1 : 0);

@@ -32,7 +32,6 @@ public class M09_AVLValidate {
         while (!queue.isEmpty() && i < values.length) {
             TreeNode9 current = queue.poll();
 
-            // 左子節點
             if (i < values.length) {
                 if (values[i] != -1) {
                     current.left = new TreeNode9(values[i]);
@@ -41,7 +40,6 @@ public class M09_AVLValidate {
                 i++;
             }
 
-            // 右子節點
             if (i < values.length) {
                 if (values[i] != -1) {
                     current.right = new TreeNode9(values[i]);
@@ -74,17 +72,17 @@ public class M09_AVLValidate {
 
         int leftHeight = checkAVL(root.left);
         if (leftHeight == -1) {
-            return -1; // 左子樹不是有效AVL
+            return -1;
         }
 
         int rightHeight = checkAVL(root.right);
         if (rightHeight == -1) {
-            return -1; // 右子樹不是有效AVL
+            return -1;
         }
 
         int balance = Math.abs(leftHeight - rightHeight);
         if (balance > 1) {
-            return -1; // 當前節點不滿足AVL性質
+            return -1;
         }
 
         return Math.max(leftHeight, rightHeight) + 1;
@@ -101,14 +99,12 @@ public class M09_AVLValidate {
 
             TreeNode9 root = buildTree(values);
 
-            // 檢查BST性質
             boolean isBST = isValidBST(root, Long.MIN_VALUE, Long.MAX_VALUE);
             if (!isBST) {
                 System.out.println("Invalid BST");
                 return;
             }
 
-            // 檢查AVL性質
             boolean isAVL = checkAVL(root) != -1;
             if (!isAVL) {
                 System.out.println("Invalid AVL");

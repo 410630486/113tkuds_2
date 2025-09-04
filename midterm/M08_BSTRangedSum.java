@@ -27,7 +27,6 @@ public class M08_BSTRangedSum {
         while (!queue.isEmpty() && i < values.length) {
             TreeNode8 current = queue.poll();
 
-            // 左子節點
             if (i < values.length) {
                 if (values[i] != -1) {
                     current.left = new TreeNode8(values[i]);
@@ -36,7 +35,6 @@ public class M08_BSTRangedSum {
                 i++;
             }
 
-            // 右子節點
             if (i < values.length) {
                 if (values[i] != -1) {
                     current.right = new TreeNode8(values[i]);

@@ -34,14 +34,12 @@ public class M11_HeapSortWithTie {
             int leftChild = 2 * current + 1;
             int rightChild = 2 * current + 2;
 
-            // 檢查左子節點
             if (leftChild < heapSize) {
                 if (compare(arr[leftChild], arr[largest]) > 0) {
                     largest = leftChild;
                 }
             }
 
-            // 檢查右子節點
             if (rightChild < heapSize) {
                 if (compare(arr[rightChild], arr[largest]) > 0) {
                     largest = rightChild;
