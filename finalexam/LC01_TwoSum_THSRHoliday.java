@@ -14,10 +14,9 @@ import java.util.*;
  *
  * 時間複雜度：O(n)，只需要遍歷一次陣列 空間複雜度：O(n)，HashMap 最多存儲 n 個元素
  */
+class Solution {
 
-public class LC01_TwoSum_THSRHoliday {
-
-    public static int[] twoSum(int[] nums, int target) {
+    public int[] twoSum(int[] nums, int target) {
         // 使用 HashMap 存儲 <需要的數, 索引>
         Map<Integer, Integer> needMap = new HashMap<>();
 
@@ -40,6 +39,9 @@ public class LC01_TwoSum_THSRHoliday {
         // 沒有找到解
         return new int[]{-1, -1};
     }
+}
+
+public class LC01_TwoSum_THSRHoliday {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
